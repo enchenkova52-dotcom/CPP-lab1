@@ -14,9 +14,9 @@ using namespace std;
 
 const double EPS = 1e-9;
 
-// -------------------- Структура решения --------------------
+
 struct Solution {
-    int rootCount;   // количество корней: 0, 1, 2
+    int rootCount;   
     double x1;
     double x2;
 
@@ -25,7 +25,7 @@ struct Solution {
     }
 };
 
-// -------------------- Квадратное уравнение --------------------
+
 class QuadraticEquation {
 private:
     double a, b, c;
@@ -65,7 +65,7 @@ public:
     }
 };
 
-// -------------------- Письмо преподавателю --------------------
+
 struct Email {
     string studentName;
     QuadraticEquation equation;
@@ -76,7 +76,7 @@ struct Email {
     }
 };
 
-// -------------------- Базовый класс студента --------------------
+
 class Student {
 protected:
     string name;
@@ -92,7 +92,7 @@ public:
     virtual Solution solve(const QuadraticEquation& eq) = 0;
 };
 
-// -------------------- Хороший студент --------------------
+
 class GoodStudent : public Student {
 public:
     GoodStudent(const string& name) : Student(name) {}
@@ -102,7 +102,7 @@ public:
     }
 };
 
-// -------------------- Средний студент --------------------
+
 class AverageStudent : public Student {
 private:
     double probabilityCorrect;
@@ -123,13 +123,13 @@ public:
             return eq.solveCorrectly();
         }
         else {
-            // Ошибочное решение
+            // ошибоч реш
             return Solution(1, 0, 0);
         }
     }
 };
 
-// -------------------- Плохой студент --------------------
+
 class BadStudent : public Student {
 public:
     BadStudent(const string& name) : Student(name) {}
@@ -139,7 +139,7 @@ public:
     }
 };
 
-// -------------------- Преподаватель --------------------
+
 class Teacher {
 private:
     queue<Email> emailQueue;
@@ -218,7 +218,7 @@ public:
     }
 };
 
-// -------------------- Чтение уравнений из файла --------------------
+
 vector<QuadraticEquation> readEquationsFromFile(const string& filename) {
     vector<QuadraticEquation> equations;
     ifstream fin(filename);
@@ -242,7 +242,7 @@ vector<QuadraticEquation> readEquationsFromFile(const string& filename) {
     return equations;
 }
 
-// -------------------- main --------------------
+
 int main() {
     
 
@@ -261,7 +261,7 @@ int main() {
 
     Teacher teacher;
 
-    // Студенты решают задачи и отправляют письма
+    
     for (const auto& eq : equations) {
         for (const auto& student : students) {
             Solution sol = student->solve(eq);
@@ -270,13 +270,13 @@ int main() {
         }
     }
 
-    // Преподаватель проверяет все письма
+    
     teacher.checkAllEmails();
 
-    // Вывод таблицы в консоль
+    
     teacher.publishGradeTable();
 
-    // Сохранение таблицы в файл
+   
     teacher.saveGradeTableToFile("results.txt");
     cout << "\nРезультаты сохранены в файл results.txt\n";
 
