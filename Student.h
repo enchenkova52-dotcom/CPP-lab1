@@ -10,7 +10,7 @@ protected:
 
 public:
     Student(const std::string& name);
-    virtual ~Student();
+    virtual ~Student() = default;
 
     std::string getName() const;
     virtual Solution solve(const QuadraticEquation& eq) = 0;
